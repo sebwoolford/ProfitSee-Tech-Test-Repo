@@ -1,0 +1,57 @@
+Welcome, hacker hopeful!
+
+Here is your task:
+
+--------------------
+
+Build a website, and deploy it somewhere. 
+
+-------------------
+Here are the details:
+
+You are going to build a website that looks up Kitsap County Tax Deed Auctions 
+on the Internet, and parses the data about the auctions.
+
+The site will then use google maps or an equivalent service to place the
+properties on a map, with data so that someone can browse them and see
+where they are located, what the auction starting price is, etc. etc.
+
+The data for these properties is contained in a number of public websites,
+so you will need to find a way to import the data into your application
+from a variety of sources.
+
+Make it awesome! It should show off your talents at data mining, working with
+visual and backend API's and be useful and cool when finished.
+
+The list can be found here: http://kcwppub3.co.kitsap.wa.us/treas/foreclosure.asp
+
+The link on the left of each row takes you to a set of detail links, including
+bills from the state.
+
+At a minimum, you should graph any that can be graphed (some may be difficult 
+to locate using Google's API), and make sure that you have the following 
+detail information:
+
+A. Type of Property
+B. Neighborhood
+C. Total unpaid tax bill
+D. Quality of View according to the assessor / survey
+
+Rock out and kick butt by adding historical price information, photos, etc.
+
+Some Rules:
+
+0) Respect the Kitsap County resources -- don't hammer the servers, don't rely on them realtime -- make a copy of the data for your own use
+1) Any language / architecture is fine
+2) Any deployment is fine, but we won't pay for deployment, so free might be good.
+3) You'll own the code you create, but we're going to want to look at it.
+4) It's illegal to contact people based on this data, so don't do it!
+5) Do all your work in your own branch; periodically push this branch back
+   github so we can see what you're up to.
+6) Keep track of the rough amount of time you spend.
+
+
+
+
+
+
