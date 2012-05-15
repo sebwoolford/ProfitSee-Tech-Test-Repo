@@ -6,7 +6,7 @@ One Company has many Accounts. One Account has many Entries. One Entry has a dat
 
 Months with no entries do not appear in the Entry table.
 
-Your job is to suggest a 12 month forecast for a Company based on their historical data.
+Your job is to suggest a 12 month forecast for a Company based on their historical data. (company_id 54 would be a good example to test)
 
 You can use php, R, python, scala, javascript, haskell, erlang or Ruby for your coding.
 
