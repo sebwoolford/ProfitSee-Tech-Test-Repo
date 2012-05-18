@@ -20,6 +20,12 @@ class Forecast {
         $this->populateForecast();
     }
     
+    /**
+    * sets the company ID
+    * 
+    * @param int $companyId
+    * @return void
+    */
     public function setCompanyId($companyId)
     {
         if ($this->isValidCompanyId($companyId)) {
@@ -27,6 +33,12 @@ class Forecast {
         }
     }
     
+    /**
+    * checks if company ID exists
+    * 
+    * @param int $companyId
+    * @return bool
+    */
     public function isValidCompanyId($companyId)
     {
         $sql = "SELECT company_name FROM company "
@@ -39,20 +51,29 @@ class Forecast {
         return true;
     }
     
+    /**
+    * dumps forecast as array
+    * 
+    * @param
+    * @return array
+    */
     public function dumpArray()
     {
         var_dump($this->forecast);
     }
     
+    /**
+    * generates a CSV file from the forecast array
+    * 
+    * @param string $locale - used to determine the CSV column separator
+    *                         in order to correctly display the CSV file
+    * @return CSV file
+    */
     public function dumpCSV($locale = 'en')
-    {
-        if ($locale == 'en') {
-            $separator = ',';
-        } else {
-            $separator = ';';
-        }
-        
+    {   
+        $separator = $locale == 'en' ? ',' : ';';
         $filename = $this->companyId ."_forecast.csv";
+        
         header("Content-type: application/csv");
         header("Content-Disposition: attachment; filename=$filename");
         
@@ -88,6 +109,12 @@ class Forecast {
         }
     }
     
+    /**
+    * sets the forecatsts start date
+    * 
+    * @param
+    * @return void
+    */
     protected function setStartDate()
     {
         $sql = "SELECT e.entry_period_end_date "
@@ -109,7 +136,12 @@ class Forecast {
         $this->startDate = $date;
     }
     
-    protected function populateForecast()
+    /**
+    * generates the forecast array
+    * 
+    * @param
+    * @return void
+    */protected function populateForecast()
     {
         $date = $this->startDate;
         
@@ -119,6 +151,15 @@ class Forecast {
         }
     }
     
+    /**
+    * retrieves the forecast for a specific month
+    * forecast is made based on accounts
+    * it includes the average of previous expenses
+    * for each account group and the total / month
+    * 
+    * @param string $date (yy-mm-dd)
+    * @return void
+    */
     protected function addMonthForecast($date)
     {
         $month = date('m', strtotime($date));
@@ -142,6 +183,12 @@ class Forecast {
         $this->forecast['total'][$index] = $avgSum;
     }
     
+    /**
+    * adds +1 month to a date
+    * 
+    * @param string $date
+    * @return string
+    */
     protected function addMonth($date)
     {
         $date = strtotime('+1 month', strtotime($date));
@@ -149,11 +196,23 @@ class Forecast {
         return $date;
     }
     
+    /**
+    * gets database config from config file
+    * 
+    * @param
+    * @return array
+    */
     protected  function getDbConfig()
     {
         return include __DIR__ . '/../config/db.config.php';
     }
     
+    /**
+    * start database connection
+    * 
+    * @param string $charset
+    * @return void
+    */
     protected function initDb($charset = 'iso88591')
     {
         if (is_null($this->db)) {
@@ -164,6 +223,12 @@ class Forecast {
         }
     }
     
+    /**
+    * fetches mysql result
+    * 
+    * @param string $sql
+    * @return array
+    */
     protected function fetch($sql)
     {
         $query = mysql_query($sql) or die(mysql_error());
