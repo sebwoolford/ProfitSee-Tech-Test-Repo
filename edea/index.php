@@ -19,9 +19,9 @@ $forecast = new Forecast($companyId);
 //$forecast->dumpArray();
 
 // dump CSV in US-format if your locale is set to US
-$forecast->dumpCSV('us');
+//$forecast->dumpCSV('us');
 
-//$forecast->dumpCSV();
+$forecast->dumpCSV();
 
 
 
